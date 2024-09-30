@@ -1,7 +1,7 @@
 # Apache Spark mit Jupyter-Notebook
 
 ## Tutorial:
-### Starten der Spark Architektur in Docker:
+### Starten der Spark Architektur in Docker (Ungetestet auf Windows!):
 `docker-compose up --build --scale spark-worker=3 -d` 
 
 Falls man die Anzahl der Worker modifizieren möchte, dann muss man
