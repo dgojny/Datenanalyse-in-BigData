@@ -7,6 +7,9 @@
 Falls man die Anzahl der Worker modifizieren möchte, dann muss man
 den `spark-worker` Parameter ändern.
 
+**Wichtig:** Der erste Build kann etwas länger Dauern (ca. 10 min),
+da die Images noch gebuildet werden müssen.
+
 ### Wichtige Links:
 Link für Jupyter-Notebook: \
 `http://localhost:8888`
