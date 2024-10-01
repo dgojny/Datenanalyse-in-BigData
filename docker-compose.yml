@@ -36,7 +36,7 @@ services:
     volumes:
       - ./notebooks:/notebooks
     ports:
-      - "8888:8888"
+      - "8889:8888"
     depends_on:
       - spark-master
     command: jupyter lab --ip=0.0.0.0 --allow-root --no-browser --NotebookApp.token='' --NotebookApp.password=''

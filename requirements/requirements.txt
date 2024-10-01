@@ -102,6 +102,7 @@ requests==2.31.0
     # via google-api-core
 rsa==4.9
     # via google-auth
+scipy==1.11.1
 six==1.16.0
     # via
     #   asttokens

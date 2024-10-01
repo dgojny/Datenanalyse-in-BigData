@@ -28,7 +28,7 @@ ENV SPARK_HOME=/usr/local/spark
 ENV PATH=$SPARK_HOME/bin:$PATH
 
 # Install PySpark and findspark
-RUN pip install pyspark findspark
+RUN pip install pyspark findspark numpy scipy pandas
 
 WORKDIR /notebooks
 
@@ -36,4 +36,4 @@ WORKDIR /notebooks
 EXPOSE 8888
 
 # Define the entrypoint for Jupyter
-CMD ["jupyter", "lab", "--ip=0.0.0.0", "--allow-root", "--no-browser"]
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--allow-root", "--no-browser", "--NotebookApp.token=''", "--NotebookApp.password=''"]
