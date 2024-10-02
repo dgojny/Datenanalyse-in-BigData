@@ -12,7 +12,7 @@ da die Images noch generiert werden müssen.
 
 ### Wichtige Links:
 Link für Jupyter-Notebook: \
-`http://localhost:8888`
+`http://localhost:8889`
 
 Link für den Spark-Master Node: \
 `http://localhost:9090`

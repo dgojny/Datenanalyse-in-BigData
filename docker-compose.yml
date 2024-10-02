@@ -7,8 +7,8 @@ services:
     image: da-spark-image
     entrypoint: ['./entrypoint.sh', 'master']
     environment:
-      - PYSPARK_PYTHON=/usr/bin/python3
-      - PYSPARK_DRIVER_PYTHON=/usr/bin/python3
+      - PYSPARK_PYTHON=/usr/local/bin/python3.10
+      - PYSPARK_DRIVER_PYTHON=/usr/local/bin/python3.10
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8080" ]
       interval: 5s
@@ -31,8 +31,8 @@ services:
     container_name: jupyter-spark
     environment:
       - SPARK_MASTER_URL=spark://spark-master:7077
-      - PYSPARK_PYTHON=/usr/bin/python3.9
-      - PYSPARK_DRIVER_PYTHON=/usr/bin/python3.9
+      - PYSPARK_PYTHON=/usr/local/bin/python3.10
+      - PYSPARK_DRIVER_PYTHON=/usr/local/bin/python3.10
     volumes:
       - ./notebooks:/notebooks
     ports:
@@ -48,8 +48,8 @@ services:
     image: da-spark-image
     entrypoint: ['./entrypoint.sh', 'history']
     environment:
-      - PYSPARK_PYTHON=/usr/bin/python3.9
-      - PYSPARK_DRIVER_PYTHON=/usr/bin/python3.9
+      - PYSPARK_PYTHON=/usr/local/bin/python3.10
+      - PYSPARK_DRIVER_PYTHON=/usr/local/bin/python3.10
     depends_on:
       - spark-master
     env_file:
@@ -66,8 +66,8 @@ services:
     image: da-spark-image
     entrypoint: ['./entrypoint.sh', 'worker']
     environment:
-      - PYSPARK_PYTHON=/usr/bin/python3.9
-      - PYSPARK_DRIVER_PYTHON=/usr/bin/python3.9
+      - PYSPARK_PYTHON=/usr/local/bin/python3.10
+      - PYSPARK_DRIVER_PYTHON=/usr/local/bin/python3.10
     depends_on:
       - spark-master
     env_file:
