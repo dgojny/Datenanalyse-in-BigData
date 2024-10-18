@@ -52,6 +52,7 @@ RUN chmod u+x /opt/spark/sbin/* && \
 
 ENV PYTHONPATH=$SPARK_HOME/python/:$PYTHONPATH
 
+# Copy entrypoint script, fix line endings, and set permissions
 COPY entrypoint.sh .
 RUN chmod a+x entrypoint.sh
 
