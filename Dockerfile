@@ -10,11 +10,10 @@ RUN apt-get update && \
       openjdk-11-jdk \
       build-essential \
       software-properties-common \
-      ssh && \
+      ssh \
+      dos2unix && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
-
-
 
 ## Download spark and hadoop dependencies and install
 
@@ -25,11 +24,9 @@ ENV HADOOP_HOME=${HADOOP_HOME:-"/opt/hadoop"}
 RUN mkdir -p ${HADOOP_HOME} && mkdir -p ${SPARK_HOME}
 WORKDIR ${SPARK_HOME}
 
-
 RUN curl https://archive.apache.org/dist/spark/spark-3.5.0/spark-3.5.0-bin-hadoop3.tgz -o spark-3.5.0-bin-hadoop3.tgz \
  && tar xvzf spark-3.5.0-bin-hadoop3.tgz --directory /opt/spark --strip-components 1 \
  && rm -rf spark-3.5.0-bin-hadoop3.tgz
-
 
 FROM spark-base as pyspark
 
@@ -53,7 +50,10 @@ RUN chmod u+x /opt/spark/sbin/* && \
 ENV PYTHONPATH=$SPARK_HOME/python/:$PYTHONPATH
 
 # Copy entrypoint script, fix line endings, and set permissions
-COPY entrypoint.sh .
-RUN chmod a+x entrypoint.sh
+COPY entrypoint.sh /opt/spark/entrypoint.sh
+RUN dos2unix /opt/spark/entrypoint.sh && \
+    chmod a+x /opt/spark/entrypoint.sh
 
-ENTRYPOINT ["./entrypoint.sh"]
+# Use ENTRYPOINT with CMD to allow passing arguments
+ENTRYPOINT ["/opt/spark/entrypoint.sh"]
+CMD ["master"]

@@ -125,3 +125,5 @@ urllib3==1.26.16
     #   requests
 wcwidth==0.2.6
     # via prompt-toolkit
+matplotlib
+statsmodels
