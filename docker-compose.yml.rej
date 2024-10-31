@@ -1,0 +1,18 @@
+diff a/docker-compose.yml b/docker-compose.yml	(rejected hunks)
+@@ -5,14 +5,14 @@
+     container_name: da-spark-master
+     build: .
+     image: da-spark-image
+-    entrypoint: ["/opt/spark/entrypoint.sh", "master"]
++    entrypoint: ['./entrypoint.sh', 'master']
+     environment:
+       - PYSPARK_PYTHON=/usr/local/bin/python3.10
+       - PYSPARK_DRIVER_PYTHON=/usr/local/bin/python3.10
+     healthcheck:
+       test: [ "CMD", "curl", "-f", "http://localhost:8080" ]
+       interval: 5s
+-      timeout: 800s
++      timeout: 3s
+       retries: 3
+     volumes:
+       - ./book_data:/opt/spark/data
