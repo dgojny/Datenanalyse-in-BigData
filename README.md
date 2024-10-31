@@ -13,7 +13,7 @@ Link to Jupyter Notebook: http://localhost:8889
 
 Link to the Spark Master Node: http://localhost:9090
 
+### Implementation
 
-
-
+The implementation of the key functions can be found [here](notebooks/QR_Spark.ipynb).
 
